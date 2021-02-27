@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'hello_world',
     'dbtest',
     'firstdbtest',
+    'loginmodule',
 ]
 
 MIDDLEWARE = [

@@ -1,153 +1,138 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <title>Login</title>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      body,
-      html {
-        height: 100%;
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-      * {
-        box-sizing: border-box;
-      }
-
-      .bg-image {
-        /* The image used */
-        background-image: url("{%static 'login.jpg'%}");
-
-        /* Add the blur effect */
-        filter: blur(2px);
-        -webkit-filter: blur(2px);
-
-        /* Full height */
-        height: 100%;
-
-        /* Center and scale the image nicely */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-
-      /* Position text in the middle of the page/image */
-      .bg-text {
-        background-color: rgb(0, 0, 0); /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
-        color: white;
-        font-weight: bold;
-        border: 3px solid #f1f1f1;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-        width: 80%;
-        padding: 20px;
-        text-align: center;
-      }
-      #textboxheight {
-        height: 50px;
-        width: 310px;
-      }
-      .button {
-        background-color: lightblue;
-        border: none;
-        color: white;
-        padding: 7px 55px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 20px;
-      }
-      .button:hover {
-        background-color: lightskyblue;
-      }
-      a:link {
-        color: maroon;
-        background-color: transparent;
-        text-decoration: none;
-      }
-      a:hover {
-        color: burlywood;
-        background-color: transparent;
-        text-decoration: underline;
-      }
-      a:active {
-        color: yellow;
-        background-color: transparent;
-        text-decoration: underline;
-      }
-      ::placeholder {
-        font-size: 20px;
-      }
-    </style>
-    <title>login Page</title>
+    <!--===============================================================================================-->
+    <link
+      rel="icon"
+      type="image/png"
+      href="{%static 'images/icons/favicon.ico' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'vendor/bootstrap/css/bootstrap.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'vendor/animate/animate.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'vendor/css-hamburgers/hamburgers.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'vendor/select2/select2.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{%static 'css/util.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{%static 'css/main.css' %}" />
+    <!--===============================================================================================-->
   </head>
   <body>
-    <div class="bg-image"></div>
+    <div class="limiter">
+      <div
+        class="container-login100"
+        style="background-image: url('{%static 'images/img-01.jpg' %}')"
+      >
+        <div class="wrap-login100 p-t-80 p-b-30">
+          <form
+            action="/login/"
+            class="login100-form validate-form"
+            method="post"
+          >
+            {% csrf_token %}
+            <div class="login100-form-avatar">
+              <img src="{%static 'images/avatar-01.png' %}" alt="AVATAR" />
+            </div>
 
-    <div class="bg-text">
-      <form action="/login/" method="post">
-        {% csrf_token %}
-        <table
-          border="0"
-          style="
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: auto;
-            margin-bottom: auto;
-          "
-        >
-          <tr bgcolor="coral" height="50px">
-            <td colspan="5" style="text-align: center; color: Black">
-              <h2><b> Log in </b></h2>
-            </td>
-          </tr>
-          <tr height="50px">
-            <td colspan="5">
+            <span class="login100-form-title p-t-20 p-b-45"> Login </span>
+
+            <div
+              class="wrap-input100 validate-input m-b-10"
+              data-validate="Username is required"
+            >
               <input
+                class="input100"
                 type="text"
                 name="username"
-                placeholder="username"
-                id="textboxheight"
-                size="36"
-                required
+                placeholder="Username"
               />
-            </td>
-          </tr>
-          <tr height="50px">
-            <td colspan="5">
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-user"></i>
+              </span>
+            </div>
+
+            <div
+              class="wrap-input100 validate-input m-b-10"
+              data-validate="Password is required"
+            >
               <input
+                class="input100"
                 type="password"
                 name="password"
-                placeholder="password"
-                minlength="8"
-                size="36"
-                id="textboxheight"
-                required
+                placeholder="Password"
               />
-            </td>
-          </tr>
-          <tr height="5px">
-            <td style="text-align: center" ;>
-              <input type="submit" class="button" name="login" value="login" />
-            </td>
-            <td style="text-align: center" ;>
-              <input class="button" type="reset" name="reset" value="reset" />
-            </td>
-          </tr>
-          <tr height="30px">
-            <td style="text-align: center" ; colspan="2">
-              <b><a href="/login/register"> New user? </a></b>
-            </td>
-          </tr>
-        </table>
-      </form>
-      <h2 style="color: rgb(219, 25, 25)">
-        <center>{%for msg in messages%} {{msg}} {%endfor%}</center>
-      </h2>
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-lock"></i>
+              </span>
+            </div>
+            <div class="container-login100-form-btn p-t-10">
+              <button class="login100-form-btn">Login</button>
+            </div>
+
+            <div class="text-center w-full p-t-25 p-b-15">
+              <a href="#" class="txt1"> Forgot Password? </a>
+            </div>
+            <div class="text-center w-full">
+              <a class="txt1" href="/login/register/">
+                Create new account
+                <i class="fa fa-long-arrow-right"></i>
+              </a>
+            </div>
+          </form>
+          <h2>
+            <span class="login100-form-title p-t-20 p-b-45" style="color: red"
+              ><center>{%for msg in messages%} {{msg}} {%endfor%}</center></span
+            >
+          </h2>
+        </div>
+      </div>
     </div>
+
+    <!--===============================================================================================-->
+    <script src="{%static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{%static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{%static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{%static 'vendor/select2/select2.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{%static 'js/main.js' %}"></script>
   </body>
 </html>

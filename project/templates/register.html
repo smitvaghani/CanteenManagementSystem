@@ -1,176 +1,157 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Register</title>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>register page</title>
-    <style>
-      body,
-      html {
-        height: 100%;
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-      * {
-        box-sizing: border-box;
-      }
-
-      .bg-image {
-        /* The image used */
-        background-image: url("{%static 'login.jpg'%}");
-
-        /* Add the blur effect */
-        filter: blur(2px);
-        -webkit-filter: blur(2px);
-
-        /* Full height */
-        height: 100%;
-
-        /* Center and scale the image nicely */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-
-      /* Position text in the middle of the page/image */
-      .bg-text {
-        background-color: rgb(0, 0, 0); /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
-        color: white;
-        font-weight: bold;
-        border: 3px solid #f1f1f1;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-        width: 80%;
-        padding: 20px;
-        text-align: center;
-      }
-      #textboxheight {
-        height: 50px;
-        width: 310px;
-      }
-      .button {
-        background-color: lightblue;
-        border: none;
-        color: white;
-        padding: 5px 46px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 20px;
-      }
-      .button:hover {
-        background-color: lightskyblue;
-      }
-      a:link {
-        color: maroon;
-        background-color: transparent;
-        text-decoration: none;
-      }
-      a:hover {
-        color: burlywood;
-        background-color: transparent;
-        text-decoration: underline;
-      }
-      a:active {
-        color: yellow;
-        background-color: transparent;
-        text-decoration: underline;
-      }
-      ::placeholder {
-        font-size: 20px;
-      }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link
+      rel="icon"
+      type="image/png"
+      href="{%static 'images/icons/favicon.ico' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'vendor/bootstrap/css/bootstrap.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'vendor/animate/animate.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'vendor/css-hamburgers/hamburgers.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'vendor/select2/select2.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{%static 'css/util.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{%static 'css/main.css' %}" />
+    <!--===============================================================================================-->
   </head>
   <body>
-    <div class="bg-image"></div>
-    <div class="bg-text">
-      <form action="/login/register/" method="post">
-        {% csrf_token %}
-        <table
-          border="0"
-          style="
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: auto;
-            margin-bottom: auto;
-          "
-        >
-          <tr bgcolor="coral" height="50px">
-            <td colspan="5" style="text-align: center; color: Black" ;>
-              <h3><b> Register </b></h3>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="5">
+    <div class="limiter">
+      <div
+        class="container-login100"
+        style="background-image: url('{%static 'images/img-01.jpg' %}')"
+      >
+        <div class="wrap-login100 p-t-55 p-b-30">
+          <form
+            action="/login/register/"
+            class="login100-form validate-form"
+            method="post"
+          >
+            {% csrf_token %}
+            <div class="login100-form-avatar">
+              <img src="{%static 'images/avatar-01.png' %}" alt="AVATAR" />
+            </div>
+
+            <span class="login100-form-title p-t-20 p-b-45"> Register </span>
+
+            <div
+              class="wrap-input100 validate-input m-b-10"
+              data-validate="Username is required"
+            >
               <input
+                class="input100"
                 type="text"
                 name="username"
-                placeholder="username"
-                id="textboxheight"
-                required
+                placeholder="Username"
               />
-            </td>
-          </tr>
-          <tr>
-            <td colspan="5">
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-user"></i>
+              </span>
+            </div>
+            <div
+              class="wrap-input100 validate-input m-b-10"
+              data-validate="Email is required"
+            >
               <input
-                type="password"
-                name="password"
-                placeholder="password"
-                minlength="8"
-                id="textboxheight"
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td colspan="5">
-              <input
-                type="password"
-                name="password1"
-                placeholder="re-enter password"
-                minlength="8"
-                id="textboxheight"
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td colspan="5">
-              <input
+                class="input100"
                 type="email"
                 name="email"
-                placeholder="email"
-                id="textboxheight"
-                required
+                placeholder="Email"
               />
-            </td>
-          </tr>
-          <tr height="5px">
-            <td colspan="2" style="text-align: center" ;>
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-user"></i>
+              </span>
+            </div>
+            <div
+              class="wrap-input100 validate-input m-b-10"
+              data-validate="Password is required"
+            >
               <input
-                type="submit"
-                class="button"
-                name="register"
-                value="Register"
+                class="input100"
+                type="password"
+                name="password"
+                placeholder="Password"
               />
-            </td>
-            <td style="text-align: center" ;>
-              <input class="button" type="reset" name="reset" value="reset" />
-            </td>
-          </tr>
-        </table>
-      </form>
-      <h3 style="color: red">
-        <center>{%for msg in messages%} {{msg}} {%endfor%}</center>
-      </h3>
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-lock"></i>
+              </span>
+            </div>
+            <div
+              class="wrap-input100 validate-input m-b-10"
+              data-validate="Retype your password"
+            >
+              <input
+                class="input100"
+                type="password"
+                name="password1"
+                placeholder="Retype your Password"
+              />
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-lock"></i>
+              </span>
+            </div>
+            <div class="container-login100-form-btn p-t-10">
+              <button class="login100-form-btn">Register</button>
+            </div>
+          </form>
+          <h2>
+            <span class="login100-form-title p-t-20 p-b-45" style="color: red"
+              ><center>{%for msg in messages%} {{msg}} {%endfor%}</center></span
+            >
+          </h2>
+        </div>
+      </div>
     </div>
+
+    <!--===============================================================================================-->
+    <script src="{%static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{%static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{%static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{%static 'vendor/select2/select2.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{%static 'js/main.js' %}"></script>
   </body>
 </html>

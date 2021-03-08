@@ -164,25 +164,19 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="owl-carousel owl-theme">
-                  {% for i in item %}
+                  {% for cate in category %}
                   <div class="item">
                     <div class="product_blog_img">
                       <div class="blog_img_box">
                         <figure>
-                          {% if i.offer %}
-                          <span style="background-color: white"
-                            ><b style="color: black"> offer </b></span
-                          >
-                          {% else %}
-                          <span>&ensp;</span>
-                          {% endif %}
-                          <img src="{{i.img.url}}" alt="#" />
+                          <a href="{%url 'items' cate.name %}"
+                            ><img src="{{cate.img.url}}"
+                          /></a>
                         </figure>
                       </div>
                     </div>
                     <div class="product_blog_cont">
-                      <h3>{{i.name}}</h3>
-                      <h4><span class="theme_color">₹</span>{{i.price}}</h4>
+                      <h3>{{cate.name}}</h3>
                     </div>
                   </div>
                   {% endfor %}

@@ -8,7 +8,7 @@ class item(models.Model):
     img = models.ImageField(upload_to="pic")
     price = models.IntegerField()
     desc = models.TextField()
-    category = models.CharField(max_length=20)
+    category = models.CharField(max_length=20, default="gujarati")
     offer = models.BooleanField(default=False)
 
 

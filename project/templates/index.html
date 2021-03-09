@@ -121,7 +121,7 @@
                                             <div class="slider_cont">
                                                 <h3>Add a joy of best taste</h3>
                                                 <p>The only thing we love more than food is you!</p>
-                                                <a class="main_bt_border" href="#">Order Now</a>
+                                                <a class="main_bt_border" href="/order/category/">Order Now</a>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
@@ -137,7 +137,7 @@
                                             <div class="slider_cont">
                                                 <h3>Add a joy of best taste</h3>
                                                 <p>The fastest food, for instant hunger</p>
-                                                <a class="main_bt_border" href="#">Order Now</a>
+                                                <a class="main_bt_border" href="/order/category/">Order Now</a>
                                             </div>
                                         </div>
                                         <div class="col-md-7 full text_align_center">
@@ -192,15 +192,10 @@
                     <div class="product_blog_img">
                         <div class="blog_img_box">
                             <figure>
-                                {% if i.offer %}
                                 <span style="background-color: white ;"><b style="color: black;"> offer </b></span>
-                                {% else %}
-                                <span>&ensp;</span>
-                                {% endif %}
                                 <img src="{{i.img.url}}" alt="#"/>
                             </figure>
                         </div>
-                        <!--<img src="{{i.img.url}}" alt="#" /> -->
                     </div>
                     <div class="product_blog_cont">
                         <h3>{{i.name}}</h3>

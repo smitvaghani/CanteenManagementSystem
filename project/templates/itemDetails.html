@@ -28,49 +28,11 @@
       href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %}"
     />
     <style>
-      .column {
-        float: left;
-        width: 25%;
-        padding: 10px;
-        height: 300px;
-      }
-      .card {
-        max-width: 300px;
-        text-align: center;
-        font-family: arial;
-      }
-      .card:hover {
-        border: 1px solid #808080;
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-      }
-      .search input[type="text"] {
-        width: 300px;
-        height: 25px;
-        border-radius: 25px;
-        border: none;
-      }
-
-      .search {
-        float: right;
-        margin: 7px;
-      }
-
-      .search button {
-        background-color: #0074d9;
-        color: #f2f2f2;
-        float: right;
-        padding: 5px 10px;
-        margin-right: 16px;
-        font-size: 12px;
-        border: none;
-        cursor: pointer;
-      }
     </style>
   </head>
   <!-- body -->
 
   <body class="main-layout Recipes_page">
-    <!-- loader  -->
     <div class="loader_bg">
       <div class="loader">
         <img src="{% static 'images/loading.gif' %}" alt="" />
@@ -108,7 +70,7 @@
         </nav>
       </div>
 
-      <div id="content">
+      < id="content">
         <!-- header -->
         <header>
           <div class="container-fluid">
@@ -125,17 +87,31 @@
                   <div class="right_header_info">
                     <ul>
                       <li class="dinone">
-                        <form action="/order/search/" method="post">
-                          {% csrf_token %}
-                          <input
-                            type="text"
-                            placeholder="Search.."
-                            name="search"
-                          />
-                          <button type="submit">
-                            <img src="{%static 'images/search.png'%}" />
-                          </button>
-                        </form>
+                        Contact Us :
+                        <img
+                          style="margin-right: 15px; margin-left: 15px"
+                          src="{% static 'images/phone_icon.png'%}"
+                          alt="#"
+                        /><a href="#">(0281)180038</a>
+                      </li>
+                      <li class="dinone">
+                        <img
+                          style="margin-right: 15px"
+                          src="{% static 'images/mail_icon.png'%}"
+                          alt="#"
+                        /><a href="#">dys@dys.food.in</a>
+                      </li>
+                      <li class="dinone">
+                        <img
+                          style="
+                            margin-right: 15px;
+                            height: 21px;
+                            position: relative;
+                            top: -2px;
+                          "
+                          src='{%static "images/location_icon.png" %}'
+                          alt="#"
+                        /><a href="#">Surat Gujarat</a>
                       </li>
                       {% if user.is_authenticated %}
                       <li class="dinone">
@@ -167,81 +143,20 @@
           </div>
         </header>
         <!-- end header -->
-
-        <div class="yellow_bg">
-          <div class="container">
-            <div class="col-md-12">
-              <div class="title">
-                <h2 style="color: black" align="left">
-                  {{items|length}} items
-                </h2>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            {% for item in items %}
-            <div class="column">
-              <div class="card">
-                <a href="{% url 'itemDetails' item.id %}">
-                  <img src="{{item.img.url}}" style="width: 100%" />
-                  <h1>{{item.name}}</h1>
-                  <dl style="font-size: 18px; color: grey">{{item.desc}}</dl>
-                  <h4>₹{{item.price}}</h4>
-                </a>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-        <!-- footer -->
-        <footer>
-          <div class="footer">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="footer_logo">
-                    <a href="{% static 'index.html' %}"
-                      ><img src="{% static 'images/logo.png' %}" alt="logo"
-                    /></a>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <ul class="lik">
-                    <li><a href="/index/">Home</a></li>
-                    <li><a href="/about/">About</a></li>
-                    <li class="active"><a href="/recipe/">Recipe</a></li>
-                    <li><a href="/blog/">blog</a></li>
-                    <li><a href="/contact/">Contact us</a></li>
-                  </ul>
-                </div>
-                <div class="col-md-12">
-                  <div class="new">
-                    <a href="#"
-                      ><img src="{% static 'images/instagram.png'%}" alt="#"
-                    /></a>
-                    &emsp;
-                    <a href="#"
-                      ><img src="{% static 'images/twitter.png'%}" alt="#"
-                    /></a>
-                    &emsp;
-                    <a href="#"
-                      ><img src="{% static 'images/facebook.png'%}" alt="#"
-                    /></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="copyright">
-              <div class="container"></div>
-            </div>
-          </div>
-        </footer>
-        <!-- end footer -->
-      </div>
+        <div class="container" style="margin-top:130px;">
+        <div class="row" >
+{% for i in item %}
+    <div>
+      <img class="img-fluid" src="{{i.img.url}}">
     </div>
-    <div class="overlay"></div>
+    <div class="col-md-5" style="background-color:grey;"align="center">
+     <h1 class="my-3" style="font-size:30px;font-weight:bold;color:white">{{i.name}}</h1>
+      <h3 class="my-3" style="color:white">{{i.desc}}</h3>
+    <b>  <h1 class="my-3" style="font-family:Britannic Bold;font-size:30px;color:white">₹{{i.price}}</h1></b>
+    </div>
+      {% endfor %}
+    </div>
+  </div>
     <!-- Javascript files-->
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>

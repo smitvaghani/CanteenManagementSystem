@@ -4,5 +4,6 @@ from ordermodule import views
 urlpatterns = [
     path('category/', views.category),
     path('items/<str:cate_name>', views.items, name="items"),
-    path('search/', views.searchItem)
+    path('search/', views.searchItem),
+    path('itemdetails/<int:item_id>', views.itemDetails, name="itemDetails")
 ]

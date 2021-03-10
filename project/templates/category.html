@@ -28,6 +28,12 @@
       href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %}"
     />
     <style>
+    .column {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        height: 300px;
+      }
       .zoom {
         padding: 50px;
         transition: transform 0.2s;
@@ -169,34 +175,20 @@
             </div>
           </div>
         </div>
-        <!-- section -->
         <section class="resip_section">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="owl-carousel owl-theme">
-                  {% for cate in category %}
-                  <div class="zoom">
-                    <div class="item">
-                      <div class="product_blog_img">
-                        <div class="blog_img_box">
-                          <figure>
-                            <a href="{%url 'items' cate.name %}"
-                              ><img src="{{cate.img.url}}"
-                            /></a>
-                          </figure>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="product_blog_cont">
-                      <h3>{{cate.name}}</h3>
-                    </div>
-                  </div>
-                  {% endfor %}
-                </div>
-              </div>
+        <div class="container">
+          <div class="row">
+            {% for cate in category %}
+            <div class="column">
+            <div class="zoom">
+            <a href="{%url 'items' cate.name %}">
+                <img src="{{cate.img.url}}" style="width: 100%" />
+                <h1 align="center" style="color:white">{{cate.name}}</h1></a>
             </div>
+            </div>
+            {% endfor %}
           </div>
+        </div>
         </section>
         <!-- footer -->
         <footer>

@@ -21,3 +21,8 @@ def searchItem(request):
     item_name = request.POST['search']
     items = item.objects.filter(name__contains=item_name, category=cate__name)
     return render(request, "items.html", {'items': items})
+
+
+def itemDetails(request, item_id):
+    itemdetails = item.objects.filter(id=item_id)
+    return render(request, "itemDetails.html", {"item": itemdetails})

@@ -6,10 +6,11 @@ from django.db import models
 class item(models.Model):
     name = models.CharField(max_length=20)
     img = models.ImageField(upload_to="pic")
-    price = models.IntegerField()
+    price = models.FloatField()
     desc = models.TextField()
     category = models.CharField(max_length=20, default="gujarati")
     offer = models.BooleanField(default=False)
+    discount = models.IntegerField(default=5)
 
 
 class feedback(models.Model):

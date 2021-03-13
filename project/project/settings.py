@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'login',
     'homemodule',
     'ordermodule',
+    'cartmodule',
 ]
 
 MIDDLEWARE = [

@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Cart
 from homemodule.models import item
 from django.contrib.auth.models import User, auth
 from django.db.models import Q
 from django.http import JsonResponse
+from django.contrib import messages
 # Create your views here.
 
 
@@ -15,11 +16,9 @@ def add_to_cart(request):
         item_details = item.objects.filter(id=item_id)
         cart = Cart(user=user, item=items)
         cart.save()
-        if Cart.objects.filter(item_id=item_id).exists():
-            return render(request, 'itemDetails.html', {'is_exists': True, 'item': item_details})
-        else:
-            return render(request, 'itemDetails.html', {'is_exists': False, 'item': item_details})
+        return redirect('/cart/show_cart')
     else:
+        messages.info(request, 'please login!')
         return render(request, "login.html")
 
 
@@ -43,6 +42,7 @@ def show_cart(request):
         else:
             return render(request, "emptycart.html")
     else:
+        messages.info(request, 'please login!')
         return render(request, "login.html")
 
 

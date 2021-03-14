@@ -14,7 +14,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             items = item.objects.all()
-            return render(request, 'index.html', {'user':user,'item' : items})
+            return render(request, 'index.html', {'user': user, 'item': items})
         else:
             messages.info(request, 'your username or password is invalid!')
             return render(request, 'login.html')
@@ -46,8 +46,8 @@ def register(request):
     else:
         return render(request, 'register.html')
 
+
 def logout_view(request):
     logout(request)
     items = item.objects.all()
-    return render(request, 'index.html',{'item' : items})
-    
+    return render(request, 'index.html', {'item': items})

@@ -1,0 +1,48 @@
+{% extends 'baseWithoutfeedback.html' %} {% load static %} {% block content %}
+<div class="container" style="margin-top: 110px">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        <h1>Order Summary</h1>
+        {% for i in item %}
+        <div class="card mb-2">
+          <div class="card-body">
+            <h4>item: {{i.item.name}}</h4>
+            <p style="font-weight: bold">Quantity: {{i.quantity}}</p>
+            <p style="font-weight: bold">Price: ₹{{i.total_cost}}</p>
+          </div>
+        </div>
+        {% endfor %}
+        <div class="card mb-2">
+          <div class="card-body">
+            <p style="font-weight: bold; font-size: 17px">
+              Amount: ₹{{amount}}
+            </p>
+            <p style="font-weight: bold; font-size: 17px">
+              Total Discount: ₹{{discount}}
+            </p>
+            <p style="font-weight: bold; font-size: 17px">TAX: {{tax}}%</p>
+            <hr />
+            <p style="font-weight: bold; font-size: 20px">
+              Total Amount: ₹{{totalamount}}
+            </p>
+          </div>
+        </div>
+        <small
+          >Term and Condition: Please Make Sure Check Details Carefully later on
+          this details can not be change</small
+        >
+      </div>
+    </div>
+  </div>
+  <div class="text-end" style="margin-left: 200px">
+    <a
+      href="/order/invoice/"
+      type="submit"
+      class="btn btn-danger mt-3 px-5 fw-bold"
+    >
+      Continue
+    </a>
+  </div>
+</div>
+{% endblock %}

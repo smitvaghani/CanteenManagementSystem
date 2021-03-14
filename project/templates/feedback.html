@@ -1,49 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback</title>
-    <style>
-        
-      a.button:hover {
-        background-color: lightskyblue;
-      }
-      a.button {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-    padding: 10px;
-    text-decoration: none;
-    color: blue;
-    background-color: white;
-}
-      .bg-text {
-        background-color: rgb(0, 0, 0); /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
-        color: white;
-        font-weight: bold;
-        border: 3px solid #f1f1f1;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-        width: 100%;
-        padding: 20px;
-        text-align: center;
-      }
-    </style>
-</head>
-<body style="background-image: url({%static 'login.jpg'%}); background-size : cover ">
-
-<div class="bg-text">
-
-    <h1 align = "center" style="color: black;" > Thank you for your feedback!! </h1>
-    <h3 align="center"><a href="/index/" class="button" > Home </a></h3>
+{% extends 'baseWithoutfeedback.html' %} {% load static %} {% block content %}
+<div class="container" style="margin-top: 130px">
+  <div align="center">
+    <h1>Thank You For Giving Feedback!</h1>
+    <a href="/index/" type="button" class="btn btn-primary">Home</a>
+  </div>
 </div>
-
-</body>
-</html>
+{% endblock %}

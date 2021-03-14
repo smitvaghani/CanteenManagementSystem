@@ -28,10 +28,6 @@ def blog(request):
     return render(request, 'blog.html')
 
 
-def contact(request):
-    return render(request, 'contact.html')
-
-
 def recipe(request):
-    items = item.objects.filter(offer=True)
+    items = item.objects.filter()
     return render(request, 'recipe.html', {'item': items})

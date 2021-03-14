@@ -28,11 +28,16 @@
       rel="stylesheet"
       id="bootstrap-css"
     />
+     <!-- awesome fontfamily -->
     <link
       rel="stylesheet"
-      href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %}"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="icon"
+      type="image/png"
+      href="{%static 'images/icons/favicon.ico' %}"
+    />
   </head>
   <!-- body -->
 
@@ -64,24 +69,26 @@
               <a href="/recipe/">Recipe</a>
             </li>
             <li>
-              ''
-              <a href="/blog/">Blog</a>
+              <a href="/order/category/">Items</a>
             </li>
             <li>
-              <a href="/contact/">Contact Us</a>
+              <a href="/order/orderdetails">Order Details</a>
+            </li>
+            <li>
+              <a href="/blog/">Blog</a>
             </li>
           </ul>
         </nav>
       </div>
 
-      < id="content">
+      <div id="content">
         <!-- header -->
         <header>
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-3">
                 <div class="full">
-                  <a class="logo" href="{% static 'index.html' %}"
+                  <a class="logo" href="/index/"
                     ><img src="{% static 'images/logo.png' %}" alt="#"
                   /></a>
                 </div>
@@ -121,6 +128,9 @@
                       <li class="dinone">
                         <img src="{% static 'images/profile.png'%}" alt="#" />
                         Welcome, {{user.username}}
+                      </li>
+                      <li class="dinone">
+                      <a href="/cart/show_cart/" ><i class="fa fa-shopping-cart" style="color:white;font-size:35px"></i></a>
                       </li>
                       <li class="button_user">
                         <a class="button active" href="/login/logout">Logout</a>
@@ -181,7 +191,7 @@
                          <a class="plus-cart btn" pid="{{c.item.id}}"><i class="fa fa-plus-square" style="font-size:24px"></i></a>
                         </div>
                         <div class="d-flex justify-content-between">
-                        <a href="#" class="remove-cart btn btn-sm btn-secondary mr-3" pid="{{c.item.id}}"
+                        <a href="#" class="remove-cart btn btn-sm btn-danger mr-3" pid="{{c.item.id}}"
                             >Remove item
                         </a>
                         <p class="mb-0">
@@ -205,46 +215,31 @@
                     <li
                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"
                     >
-                    Amount<span id="amount">₹{{amount}}</span>
+                    Amount<span>₹<span id="amount">{{amount}}</span></span>
                     </li>
                     <li
                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"
                     >
-                    Total Discount<span id="discount">₹{{discount}}</span>
+                    Total Discount<span>₹<span id="discount">{{discount}}</span></span>
                     </li>
                     <li
                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"
                     >
                     Tax<span>{{tax}}%</span>
                     </li>
+
                     <li
                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3"
                     >
                     <div>
                         <strong>Total</strong> <small>(including TAX)</small>
                     </div>
-                    <span><strong id="total_amount">₹{{total_amount}}</strong></span>
+                    <span>₹<strong id="total_amount">{{total_amount}}</strong></span>
                     </li>
                 </ul>
                 <div class="d-grid">
-                <center>   <a href="#" class="btn btn-primary">Place Order</a></center>
+                <center>   <a href="/order/checkout/" class="btn btn-primary btn-lg btn-block">Place Order</a></center>
                 </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        </div>
-        <div class="container">
-        <div class="row">
-            <div class="col-sm-8">
-            <div class="card">
-                <div class="card-body">
-                <h5 class="mb-4">We accept</h5>
-                <img
-                    src="{% static 'app/images/payment.png' %}"
-                    alt=""
-                    class="img-fluid"
-                />
                 </div>
             </div>
             </div>

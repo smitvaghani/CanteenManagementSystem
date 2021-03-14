@@ -1,8 +1,8 @@
-from django.shortcuts import render
-from ordermodule.models import Category
+from django.shortcuts import render, redirect
+from ordermodule.models import Category, OrderPlaced
 from homemodule.models import item
-# Create your views here.
-from django.http import HttpResponse
+from cartmodule.models import Cart
+from django.contrib import messages
 
 
 def category(request):
@@ -24,5 +24,45 @@ def searchItem(request):
 
 
 def itemDetails(request, item_id):
+    user = request.user
     itemdetails = item.objects.filter(id=item_id)
-    return render(request, "itemDetails.html", {"item": itemdetails})
+    if request.user.is_authenticated:
+        if Cart.objects.filter(user=user, item_id=item_id).exists():
+            return render(request, 'itemDetails.html', {'is_exists': True, 'item': itemdetails})
+        else:
+            return render(request, 'itemDetails.html', {'is_exists': False, 'item': itemdetails})
+    else:
+        return render(request, 'itemDetails.html', {'is_exists': False, 'item': itemdetails})
+
+
+def checkout(request):
+    user = request.user
+    cart_item = Cart.objects.filter(user=user)
+    amount = 0.0
+    tax = 5
+    total_amount = 0.0
+    discount = 0
+    cart_item = [p for p in Cart.objects.all() if p.user == request.user]
+    if cart_item:
+        for p in cart_item:
+            temp = (p.quantity * p.item.price * p.item.discount) / 100
+            tempamount = ((p.quantity * p.item.price) - temp)
+            amount += tempamount
+            discount += temp
+        total_amount = amount + (amount * tax / 100)
+    return render(request, 'checkout.html', {'item': cart_item, 'totalamount': total_amount, 'amount': amount, 'tax': tax, 'discount': discount})
+
+
+def invoice(request):
+    user = request.user
+    cart = Cart.objects.filter(user=user)
+    for c in cart:
+        OrderPlaced(user=user, item=c.item, quantity=c.quantity).save()
+        c.delete()
+    return redirect('/order/orderdetails')
+
+
+def orderDetails(request):
+    user = request.user
+    order = OrderPlaced.objects.filter(user=user)
+    return render(request, 'orderdetails.html', {'order': order})

@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from reportlab.pdfgen import canvas  
+from django.http import HttpResponse  
 from ordermodule.models import Category, OrderPlaced
 from homemodule.models import item
 from cartmodule.models import Cart
@@ -19,7 +21,7 @@ def items(request, cate_name):
 
 def searchItem(request):
     item_name = request.POST['search']
-    items = item.objects.filter(name__contains=item_name, category=cate__name)
+    items = item.objects.filter(name__icontains=item_name, category=cate__name)
     return render(request, "items.html", {'items': items})
 
 
@@ -66,3 +68,19 @@ def orderDetails(request):
     user = request.user
     order = OrderPlaced.objects.filter(user=user)
     return render(request, 'orderdetails.html', {'order': order})
+
+def gen_invoice(request):
+    user = request.user
+    order = OrderPlaced.objects.filter(user=user)
+    return render(request, 'invoice.html',{'order':order})
+
+def preview(request):
+    id = request.GET["id"]
+    response = HttpResponse(content_type='application/pdf')  
+    response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'  
+    p = canvas.Canvas(response)  
+    p.setFont("Times-Roman", 55)  
+    p.drawString(100,700, id)  
+    p.showPage()  
+    p.save()  
+    return response 

@@ -29,5 +29,5 @@ def blog(request):
 
 
 def recipe(request):
-    items = item.objects.filter()
+    items = item.objects.filter(offer=True)
     return render(request, 'recipe.html', {'item': items})

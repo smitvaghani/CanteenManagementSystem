@@ -9,7 +9,6 @@ urlpatterns = [
     path('checkout/', views.checkout),
     path('invoice/', views.invoice),
     path('orderdetails/', views.orderDetails),
-    path('generate_invoice/',views.gen_invoice),
-    path('preview/',views.preview),
-    # path('download/',views.download),
+    path('preview/',views.Preview),
+    path('download/',views.Download),
 ]

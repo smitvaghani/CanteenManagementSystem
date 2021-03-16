@@ -5,6 +5,12 @@ from ordermodule.models import Category, OrderPlaced
 from homemodule.models import item
 from cartmodule.models import Cart
 from django.contrib import messages
+from io import BytesIO
+from django.http import HttpResponse
+from django.views import View
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+from datetime import datetime 
 
 
 def category(request):
@@ -69,18 +75,40 @@ def orderDetails(request):
     order = OrderPlaced.objects.filter(user=user)
     return render(request, 'orderdetails.html', {'order': order})
 
-def gen_invoice(request):
-    user = request.user
-    order = OrderPlaced.objects.filter(user=user)
-    return render(request, 'invoice.html',{'order':order})
 
-def preview(request):
-    id = request.GET["id"]
-    response = HttpResponse(content_type='application/pdf')  
-    response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'  
-    p = canvas.Canvas(response)  
-    p.setFont("Times-Roman", 55)  
-    p.drawString(100,700, id)  
-    p.showPage()  
-    p.save()  
-    return response 
+
+
+
+
+def render_to_pdf(template_src, cart,user,current_time):
+    
+	template = get_template(template_src)
+	html  = template.render({'cart':cart,'user':user,'Datetime':current_time})
+	result = BytesIO()
+	pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+	if not pdf.err:
+		return HttpResponse(result.getvalue(), content_type='application/pdf')
+	return None
+
+
+
+#Opens up page as PDF
+def Preview(request):
+    cart = Cart.objects.filter(user=request.user)
+    current_time = datetime.now()
+    pdf = render_to_pdf('pdf_template.html', cart,request.user,current_time)
+    return HttpResponse(pdf, content_type='application/pdf')
+
+
+#Automaticly downloads to PDF file
+def Download(request):
+    cart = Cart.objects.filter(user=request.user)
+    current_time = datetime.now()
+    pdf = render_to_pdf('pdf_template.html',cart,request.user,current_time)
+    response = HttpResponse(pdf, content_type='application/pdf')
+    filename = "Invoice.pdf" 
+    content = "attachment; filename=%s" %(filename)
+    response['Content-Disposition'] = content
+    return response
+
+

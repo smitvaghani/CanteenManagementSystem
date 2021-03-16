@@ -1,159 +1,121 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Register</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--===============================================================================================-->
-    <link
-      rel="icon"
-      type="image/png"
-      href="{%static 'images/icons/favicon.ico' %}"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{%static 'vendor/bootstrap/css/bootstrap.min.css' %}"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{%static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{%static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{%static 'vendor/animate/animate.css' %}"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{%static 'vendor/css-hamburgers/hamburgers.min.css' %}"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{%static 'vendor/select2/select2.min.css' %}"
-    />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{%static 'css/util.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{%static 'css/main.css' %}" />
-    <!--===============================================================================================-->
-  </head>
-  <body>
-    <div class="limiter">
-      <div
-        class="container-login100"
-        style="background-image: url('{%static 'images/img-01.jpg' %}')"
-      >
-        <div class="wrap-login100 p-t-55 p-b-30">
-          <form
-            action="/login/register/"
-            class="login100-form validate-form"
-            method="post"
-          >
-            {% csrf_token %}
-            <div class="login100-form-avatar">
-              <img src="{%static 'images/avatar-01.png' %}" alt="AVATAR" />
+{% extends 'baseWithoutfeedback.html' %} {% load static %} {% block content %}
+<div style="margin-top: 130px">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-md-offset-3">
+        <div class="panel panel-default shadow p-3 mb-5 bg-white rounded">
+          <div class="panel-body">
+            <div class="col-md-12 text-center">
+              <i class="fa fa-4x fa-user-plus"></i>
             </div>
+            <div id="l-register" class="bottommargin_0 col-md-12 form-group">
+              <form
+                action="/login/register/"
+                class="form-horizontal"
+                method="post"
+              >
+                {% csrf_token %}
+                <div class="form-group">
+                  <div class="col-md-3">
+                    <label for="UserName">UserName</label>
+                  </div>
 
-            <span class="login100-form-title p-t-20 p-b-45"> Register </span>
+                  <div class="col-md-9">
+                    <div class="input-group input-group-sm">
+                      <span class="input-group-addon" id="basic-addon1"
+                        ><i class="fa fa-user"></i
+                      ></span>
 
-            <div
-              class="wrap-input100 validate-input m-b-10"
-              data-validate="Username is required"
-            >
-              <input
-                class="input100"
-                type="text"
-                name="username"
-                placeholder="Username"
-              />
-              <span class="focus-input100"></span>
-              <span class="symbol-input100">
-                <i class="fa fa-user"></i>
-              </span>
+                      <input
+                        class="form-control"
+                        name="username"
+                        placeholder="Enter Username"
+                        type="text"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-3">
+                    <label for="Email">Email</label>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="input-group input-group-sm">
+                      <span class="input-group-addon">
+                        <i class="fa fa-envelope-o fa-lg"></i>
+                      </span>
+                      <input
+                        class="form-control"
+                        name="email"
+                        placeholder="Enter email"
+                        type="email"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-3">
+                    <label for="Password">Password</label>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="input-group input-group-sm">
+                      <span class="input-group-addon">
+                        <i class="fa fa-lock fa-lg"></i>
+                      </span>
+                      <input
+                        class="form-control"
+                        name="password"
+                        placeholder="Enter password"
+                        type="password"
+                        minlength="8"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-3">
+                    <label for="Password">Confirm Password</label>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="input-group input-group-sm">
+                      <span class="input-group-addon">
+                        <i class="fa fa-lock fa-lg"></i>
+                      </span>
+                      <input
+                        class="form-control"
+                        name="password1"
+                        placeholder="ReType password"
+                        type="password"
+                        minlength="8"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <button
+                      type="submit"
+                      class="btn btn-info btn-block login-button"
+                    >
+                      Register &nbsp;
+                    </button>
+                  </div>
+                </div>
+              </form>
+              {%for msg in messages%}
+              <script type="text/javascript">
+                alert("{{msg}}");
+              </script>
+              {%endfor%}
             </div>
-            <div
-              class="wrap-input100 validate-input m-b-10"
-              data-validate="Email is required"
-            >
-              <input
-                class="input100"
-                type="email"
-                name="email"
-                placeholder="Email"
-              />
-              <span class="focus-input100"></span>
-              <span class="symbol-input100">
-                <i class="fa fa-user"></i>
-              </span>
-            </div>
-            <div
-              class="wrap-input100 validate-input m-b-10"
-              data-validate="Password is required"
-            >
-              <input
-                class="input100"
-                type="password"
-                name="password"
-                placeholder="Password"
-                minlength="8"
-              />
-              <span class="focus-input100"></span>
-              <span class="symbol-input100">
-                <i class="fa fa-lock"></i>
-              </span>
-            </div>
-            <div
-              class="wrap-input100 validate-input m-b-10"
-              data-validate="Retype your password"
-            >
-              <input
-                class="input100"
-                type="password"
-                name="password1"
-                placeholder="Retype your Password"
-                minlength="8"
-              />
-              <span class="focus-input100"></span>
-              <span class="symbol-input100">
-                <i class="fa fa-lock"></i>
-              </span>
-            </div>
-            <div class="container-login100-form-btn p-t-10">
-              <button class="login100-form-btn">Register</button>
-            </div>
-          </form>
-          {%for msg in messages%}
-          <script type="text/javascript">
-            alert("{{msg}}");
-          </script>
-          {%endfor%}
+          </div>
         </div>
       </div>
     </div>
-
-    <!--===============================================================================================-->
-    <script src="{%static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-    <!--===============================================================================================-->
-    <script src="{%static 'vendor/bootstrap/js/popper.js' %}"></script>
-    <script src="{%static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-    <!--===============================================================================================-->
-    <script src="{%static 'vendor/select2/select2.min.js' %}"></script>
-    <!--===============================================================================================-->
-    <script src="{%static 'js/main.js' %}"></script>
-  </body>
-</html>
+  </div>
+</div>
+{% endblock %}

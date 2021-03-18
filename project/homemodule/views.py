@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from homemodule.models import item, feedback
-
 # Create your views here.
 
 

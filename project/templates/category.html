@@ -11,19 +11,26 @@
   </div>
 </div>
 <section class="resip_section">
-  <div class="container">
-    <div class="row">
-      {% for cate in category %}
-      <div class="column">
-        <div class="zoom">
-          <a href="{%url 'items' cate.name %}">
-            <img src="{{cate.img.url}}" style="width: 100%" />
-            <h1 align="center" style="color: white">{{cate.name}}</h1></a
-          >
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
+<div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="ourheading">
+                        <h2>Our Recipes</h2>
+                    </div>
+                </div> 
+                <div class="container">
+                  <div class="row">
+                    {% for cate in category %}
+                    <div class="column">
+                      <div class="zoom">
+                        <a href="{%url 'items' cate.name %}">
+                          <img src="{{cate.img.url}}" style="width: 100%" />
+                          <h1 align="center" style="color: white">{{cate.name}}</h1></a
+                        >
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
 </section>
 {% endblock %}

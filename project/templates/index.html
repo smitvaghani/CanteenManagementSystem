@@ -57,39 +57,38 @@
     <section class="resip_section">
         <div class="container">
             <div class="row">
-         <div class="col-md-12">
-       <div class="ourheading">
-    <h2>Our Recipes</h2>
-  </div>
-</div>    
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="owl-carousel owl-theme">
-                {% for i in item %}
-                <div class="item">
-                    <div class="product_blog_img">
-                        <div class="blog_img_box">
-                            <figure>
-                                <span style="background-color: white ;padding : 10px ; font-family: Arial;"><b style="color: black;"> offer </b></span>
-                                <a href="{% url 'itemDetails' i.id %}"><img src="{{i.img.url}}" alt="#"/></a>
-                            </figure>
-                        </div>
+                <div class="col-md-12">
+                    <div class="ourheading">
+                        <h2>Our Recipes</h2>
                     </div>
-                    <div class="product_blog_cont">
-                        <h3>{{i.name}}</h3>
-                        <h4><span class="theme_color">₹</span>{{i.price}}</h4>
+                </div>    
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="owl-carousel owl-theme">
+                                {% for i in item %}
+                                <div class="item">
+                                    <div class="product_blog_img">
+                                        <div class="blog_img_box">
+                                            <figure>
+                                                <span style="background-color: white ;padding : 10px ; font-family: Arial;"><b style="color: black;"> offer </b></span>
+                                                    <a href="{% url 'itemDetails' i.id %}"><img src="{{i.img.url}}" alt="#"/></a>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                <div class="product_blog_cont">
+                                    <h3>{{i.name}}</h3>
+                                    <h4><span class="theme_color">₹</span>{{i.price}}</h4>
+                            </div>
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
-                {% endfor %}
-
             </div>
         </div>
     </div>
-</div>
-</div>
-</div>
-</section>
+    </div>
+    </section>
 <div class="bg_bg">
 <!-- about -->
 <div class="about">

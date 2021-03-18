@@ -150,6 +150,13 @@ button {
   padding: 0;
   cursor: pointer;
 }
+.login100-form-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
 .full {
   float: left;
   width: 100%;

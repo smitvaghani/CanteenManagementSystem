@@ -6,7 +6,7 @@ import time
 
 class HomeModuleTest(LiveServerTestCase):
     def setUp(self):
-        self.driver = Chrome("E:\\SEPP\\Lab\\selenium\\chromedriver.exe")
+        self.driver = Chrome("E:\\selenium\\chromedriver.exe")
         self.driver.get("http://127.0.0.1:8000/index/")
 
     def tearDown(self):

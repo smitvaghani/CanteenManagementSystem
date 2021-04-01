@@ -1,12 +1,13 @@
 from django.test import LiveServerTestCase
 from selenium.webdriver import Chrome
+import time
 # Create your tests here.
 
 
 class LoginTest(LiveServerTestCase):
 
     def setUp(self):
-        self.driver = Chrome("E:\\SEPP\\Lab\\selenium\\chromedriver.exe")
+        self.driver = Chrome("E:\\selenium\\chromedriver.exe")
 
     def tearDown(self):
         self.driver.quit()
@@ -24,10 +25,11 @@ class LoginTest(LiveServerTestCase):
     def registerFormTest(self):
         driver = self.driver
         driver.get('http://127.0.0.1:8000/login/register')
+        time.sleep(5)
         username_input = driver.find_element_by_id(
             "reg_username")
         email_input = driver.find_element_by_id("reg_email")
-        username_input.send_keys("yash")
+        username_input.send_keys("yash1")
         email_input.send_keys("yash@gmail.com")
         password_input = driver.find_element_by_id("reg_password")
         password_input.send_keys('12345678')

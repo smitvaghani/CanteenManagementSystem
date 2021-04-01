@@ -5,7 +5,7 @@ import time
 
 class CartModuleTest(LiveServerTestCase):
     def setUp(self):
-        self.driver = Chrome("E:\\SEPP\\Lab\\selenium\\chromedriver.exe")
+        self.driver = Chrome("E:\\selenium\\chromedriver.exe")
         self.driver.get("http://127.0.0.1:8000/login/")
         username_input = self.driver.find_element_by_id("log_username")
         username_input.send_keys("yash")
@@ -15,8 +15,8 @@ class CartModuleTest(LiveServerTestCase):
         loginbutton.click()
         self.driver.maximize_window()
 
-    # def tearDown(self):
-    #     self.driver.quit()
+    def tearDown(self):
+        self.driver.quit()
 
     def cartTest(self):
         driver = self.driver

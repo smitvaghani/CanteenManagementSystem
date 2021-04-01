@@ -30,3 +30,5 @@ class OrderPlaced(models.Model):
         temp = (self.quantity * self.item.price * self.item.discount) / 100
         amount = ((self.quantity * self.item.price) - temp)
         return amount
+
+    

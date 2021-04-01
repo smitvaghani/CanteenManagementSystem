@@ -38,11 +38,12 @@
     <!-- loader  -->
     <div class="loader_bg">
       <div class="loader">
-        <img src="{% static 'images/loading.gif' %}" alt="" />
+        <img src="{% static 'images/loading.gif' %}" />
       </div>
     </div>
+    <!-- end loader -->
     <div class="wrapper">
-      <!-- end loader -->
+      
 
       <div class="sidebar">
         <!-- Sidebar  -->
@@ -65,7 +66,7 @@
               <a href="/order/category/">Items</a>
             </li>
             <li>
-              <a href="/order/orderdetails">Order Details</a>
+              <a href="/order/orderdetails">Your Orders</a>
             </li>
             <li>
               <a href="/blog/">Blog</a>
@@ -78,14 +79,14 @@
         <header>
           <div class="container-fluid">
             <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-2">
                 <div class="full">
                   <a class="logo" href="/index/"
                     ><img src="{% static 'images/logo.png' %}" alt="#"
                   /></a>
                 </div>
               </div>
-              <div class="col-md-9">
+              <div class="col-md-10">
                 <div class="full">
                   <div class="right_header_info">
                     <ul>
@@ -129,8 +130,8 @@
                       </li>
                       {%else%}
                       <li class="button_user">
-                        <a class="button active" href="/login/">Login</a
-                        ><a class="button" href="/login/register">Register</a>
+                        <a class="button active" id="loginbutton" href="/login/">Login</a
+                        ><a class="button" id="registerbutton" href="/login/register/">Register</a>
                       </li>
                       {%endif%}
                       <li>
@@ -168,6 +169,7 @@
                           placeholder="Name"
                           type="text"
                           name="Name"
+                          id="feed_name"
                           required
                         />
                       </div>
@@ -177,6 +179,7 @@
                           placeholder="Email"
                           type="text"
                           name="Email"
+                          id="feed_email"
                           required
                         />
                       </div>
@@ -185,7 +188,9 @@
                           class="form-control"
                           placeholder="Phone"
                           type="text"
+                          id="feed_phone"
                           name="Phone"
+                          minlength="10"
                         />
                       </div>
                       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -194,11 +199,12 @@
                           placeholder="Message"
                           type="text"
                           name="Message"
+                          id="feed_message"
                           required
                         ></textarea>
                       </div>
                       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <button class="send">Send</button>
+                        <button class="send" id="feed_send">Send</button>
                       </div>
                     </div>
                   </form>

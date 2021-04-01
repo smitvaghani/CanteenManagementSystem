@@ -8,9 +8,9 @@ class item(models.Model):
     img = models.ImageField(upload_to="pic")
     price = models.FloatField()
     desc = models.TextField()
-    category = models.CharField(max_length=20, default="gujarati")
+    category = models.CharField(max_length=20)
     offer = models.BooleanField(default=False)
-    discount = models.IntegerField(default=5)
+    discount = models.IntegerField(null=True)
 
 
 class feedback(models.Model):
